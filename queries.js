@@ -34,9 +34,4 @@ var retrieveAllListings = function() {
 findLibraryWest();
 removeCable();
 updatePhelpsMemorial();
-//retrieveAllListings();
-
-listing.find({ 'code': 'PHL' }, (err, docs) => {
-  err ? console.log('oops') : null;
-  console.log(docs)
-});
+retrieveAllListings();
