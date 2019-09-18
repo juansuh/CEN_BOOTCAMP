@@ -7,8 +7,20 @@ var fs = require('fs'),
     mongoose = require('mongoose'), 
     Schema = mongoose.Schema, 
     Listing = require('./ListingSchema.js'), 
-    config = require('./config');
+    config = require('./config.js'),
+    listingData = require('./listings.json')['entries'];
 
+mongoose.connect(config.db.uri, { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', false);
+
+var listingData;
+
+console.log(listingData);
+
+listingData.forEach((el)=> {
+  new Listing(el).save()
+})
 /* Connect to your database using mongoose - remember to keep your key secret*/
 //see https://mongoosejs.com/docs/connections.html
 //See https://docs.atlas.mongodb.com/driver-connection/
